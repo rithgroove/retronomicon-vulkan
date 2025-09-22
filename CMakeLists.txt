@@ -14,15 +14,15 @@ set(RETRO_VULKAN_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE PATH "Ret
 
 # External libraries
 add_subdirectory(external/SDL2)
-add_subdirectory(external/glad)
+add_subdirectory(external/vulkan)
 
 # Engine source (will add retronomicon-vulkan library)
 add_subdirectory(src)
 
 target_link_libraries(retronomicon-vulkan
     PUBLIC
-        glad
         SDL2  
+        Vulkan-Headers
 )
 
 # Public include paths
@@ -31,7 +31,7 @@ target_include_directories(retronomicon-vulkan
         ${RETRO_DIR}/include
         ${RETRO_OPENGL_DIR}/include
     PRIVATE
-        ${RETRO_OPENGL_DIR}/external/glad/include
+        ${RETRO_OPENGL_DIR}/external/vulkan/include
         ${RETRO_OPENGL_DIR}/external/SDL2/include
 )
 

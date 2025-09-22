@@ -9,12 +9,10 @@ target_include_directories(
     ${RETRO_DIR}/include
     ${RETRO_VULKAN_DIR}/include
     ${RETRO_VULKAN_DIR}/external/SDL2/include
-    ${RETRO_VULKAN_DIR}/external/glad/include
     ${RETRO_VULKAN_DIR}/external/vulkan/include
 )
 
 target_link_libraries(retronomicon-vulkan-graphics
-        glad           # static glad
         SDL2::SDL2     # static SDL2 (change to SDL2::SDL2-static if needed)
         Vulkan-Headers
         )

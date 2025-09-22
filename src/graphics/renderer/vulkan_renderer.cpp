@@ -1,5 +1,10 @@
 #include "retronomicon/graphics/renderer/vulkan_renderer.h"
-#include <glad/vulkan.h>
+#include <vulkan/vulkan.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_vulkan.h>
+#include <iostream>
+#include <stdexcept>
+#include <vector>
 
 namespace retronomicon::vulkan {
 
@@ -34,12 +39,7 @@ void VulkanRenderer::init() {
         throw std::runtime_error("Failed to create Vulkan surface");
     }
 
-    // 3. Load Vulkan functions with GLAD
-    if (!gladLoaderLoadVulkan(m_instance, vkGetInstanceProcAddr)) {
-        throw std::runtime_error("Failed to load Vulkan functions with GLAD");
-    }
-
-    // 4. Pick physical device + logical device
+    // 3. Pick physical device + logical device
     pickPhysicalDevice();
     createLogicalDevice();
 
@@ -113,7 +113,7 @@ void VulkanRenderer::pickPhysicalDevice() {
     }
     std::vector<VkPhysicalDevice> devices(deviceCount);
     vkEnumeratePhysicalDevices(m_instance, &deviceCount, devices.data());
-    m_physicalDevice = devices[0]; // TODO: better selection
+    m_physicalDevice = devices[0]; // TODO: implement scoring/selection
 }
 
 void VulkanRenderer::createLogicalDevice() {
@@ -121,7 +121,7 @@ void VulkanRenderer::createLogicalDevice() {
 
     VkDeviceQueueCreateInfo queueInfo{};
     queueInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-    queueInfo.queueFamilyIndex = 0; // TODO: query correct family
+    queueInfo.queueFamilyIndex = 0; // TODO: query correct family index
     queueInfo.queueCount = 1;
     queueInfo.pQueuePriorities = &queuePriority;
 
@@ -135,7 +135,7 @@ void VulkanRenderer::createLogicalDevice() {
     }
 
     vkGetDeviceQueue(m_device, 0, 0, &m_graphicsQueue);
-    m_presentQueue = m_graphicsQueue; // TODO: separate if needed
+    m_presentQueue = m_graphicsQueue; // TODO: choose properly
 }
 
 } // namespace retronomicon::vulkan
