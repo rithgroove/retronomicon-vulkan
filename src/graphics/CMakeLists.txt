@@ -7,12 +7,14 @@ add_library(retronomicon-vulkan-graphics OBJECT ${OPENGL_GRAPHIC_PLUGIN})
 target_include_directories(
     retronomicon-vulkan-graphics PUBLIC
     ${RETRO_DIR}/include
-    ${RETRO_OPENGL_DIR}/include
-    ${RETRO_OPENGL_DIR}/external/SDL2/include
-    ${RETRO_OPENGL_DIR}/external/glad/include
+    ${RETRO_VULKAN_DIR}/include
+    ${RETRO_VULKAN_DIR}/external/SDL2/include
+    ${RETRO_VULKAN_DIR}/external/glad/include
+    ${RETRO_VULKAN_DIR}/external/vulkan/include
 )
 
 target_link_libraries(retronomicon-vulkan-graphics
         glad           # static glad
         SDL2::SDL2     # static SDL2 (change to SDL2::SDL2-static if needed)
+        Vulkan-Headers
         )
