@@ -47,11 +47,50 @@ void VulkanRenderer::init() {
     std::cout << "VulkanRenderer initialized with SDL window + Vulkan instance ✅" << std::endl;
 }
 
-void VulkanRenderer::render() {
+void VulkanRenderer::clear() {
     if (!m_initialized) return;
 
-    // TODO: swapchain + draw commands
-    std::cout << "VulkanRenderer::render() frame stub" << std::endl;
+    // TODO: clear swapchain image once swapchain support is implemented.
+}
+
+void VulkanRenderer::show() {
+    if (!m_initialized) return;
+
+    // TODO: submit command buffer and present once swapchain support is implemented.
+}
+
+void VulkanRenderer::render(std::shared_ptr<retronomicon::graphics::Texture> texture,
+                            const retronomicon::math::Vec2& position,
+                            const retronomicon::math::Vec2& scale,
+                            float rotation,
+                            float alpha) {
+    (void)texture;
+    (void)position;
+    (void)scale;
+    (void)rotation;
+    (void)alpha;
+}
+
+void VulkanRenderer::renderQuad(std::shared_ptr<retronomicon::graphics::Texture> texture,
+                                const retronomicon::math::Rect& target,
+                                const retronomicon::math::Rect& source,
+                                float rotation,
+                                float alpha,
+                                const retronomicon::graphics::Color& color) {
+    (void)texture;
+    (void)target;
+    (void)source;
+    (void)rotation;
+    (void)alpha;
+    (void)color;
+}
+
+int VulkanRenderer::getWidth() const {
+    return m_width;
+}
+
+int VulkanRenderer::getHeight() const {
+    return m_height;
 }
 
 void VulkanRenderer::shutdown() {

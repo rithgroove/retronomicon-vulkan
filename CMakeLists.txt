@@ -29,10 +29,10 @@ target_link_libraries(retronomicon-vulkan
 target_include_directories(retronomicon-vulkan
     PUBLIC
         ${RETRO_DIR}/include
-        ${RETRO_OPENGL_DIR}/include
+        ${RETRO_VULKAN_DIR}/include
     PRIVATE
-        ${RETRO_OPENGL_DIR}/external/vulkan/include
-        ${RETRO_OPENGL_DIR}/external/SDL2/include
+        ${RETRO_VULKAN_DIR}/external/vulkan/include
+        ${RETRO_VULKAN_DIR}/external/SDL2/include
 )
 
 # Optional: Message info

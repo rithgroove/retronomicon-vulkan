@@ -1,8 +1,8 @@
-file(GLOB_RECURSE OPENGL_GRAPHIC_PLUGIN CONFIGURE_DEPENDS
+file(GLOB_RECURSE VULKAN_GRAPHICS_SRC CONFIGURE_DEPENDS
     ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 )
 
-add_library(retronomicon-vulkan-graphics OBJECT ${OPENGL_GRAPHIC_PLUGIN})
+add_library(retronomicon-vulkan-graphics OBJECT ${VULKAN_GRAPHICS_SRC})
 
 target_include_directories(
     retronomicon-vulkan-graphics PUBLIC

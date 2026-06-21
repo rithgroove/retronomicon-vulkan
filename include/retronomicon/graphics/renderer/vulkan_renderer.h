@@ -17,8 +17,25 @@ public:
     ~VulkanRenderer();
 
     void init() override;
-    void render() override;
+    void clear() override;
+    void show() override;
     void shutdown() override;
+
+    void render(std::shared_ptr<retronomicon::graphics::Texture> texture,
+                const retronomicon::math::Vec2& position,
+                const retronomicon::math::Vec2& scale,
+                float rotation = 0.0f,
+                float alpha = 1.0f) override;
+
+    void renderQuad(std::shared_ptr<retronomicon::graphics::Texture> texture,
+                    const retronomicon::math::Rect& target,
+                    const retronomicon::math::Rect& source,
+                    float rotation = 0.0f,
+                    float alpha = 1.0f,
+                    const retronomicon::graphics::Color& color = retronomicon::graphics::Color::White()) override;
+
+    int getWidth() const override;
+    int getHeight() const override;
 
 private:
     std::string m_title;
